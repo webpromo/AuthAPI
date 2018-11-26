@@ -69,4 +69,4 @@ var UserSchema = new mongoose.Schema({
 );
 
 
-module.exports = mongoose.model('Product', UserSchema);
+module.exports = mongoose.model('Users', UserSchema);
