@@ -30,6 +30,8 @@ async function getAll() {
 }
 
 async function getById(id) {
+    console.log("User on user.service =",User);
+    console.log("your mom...")
     return await User.findById(id).select('-hash');
 }
 
