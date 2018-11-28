@@ -3,11 +3,11 @@ const router = express.Router();
 const userService = require('./user.service');
 
 // routes
-router.post('/authenticate', authenticate);  // works 11/27 @ 4:15
-router.post('/register', register);  // works 11/27 @ 11:45
+router.post('/authenticate', authenticate);
+router.post('/register', register);
 router.get('/current', getCurrent);
-router.get('/all', getAll);  // works 11/27 @ 4:28 in postman
-router.get('/:id', getById);  // works 11/28 @ 10:02 in postman
+router.get('/all', getAll);
+router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -45,7 +45,7 @@ function getById(req, res, next) {
 
 function update(req, res, next) {
     userService.update(req.params.id, req.body)
-        .then(() => res.json({}))
+        .then(() => res.json(req.body))
         .catch(err => next(err));
 }
 
