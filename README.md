@@ -9,7 +9,8 @@ NodeJS + MongoDB API for User Management, Authentication and Registration.
      - See a specific user's contact info, 
      - whether a given user is logged in, and 
      - whether the user in question has admin status.
-4. Create new users by sending the following JSON in the body to /users/register:
+4. Log a user in or out by doing a PUT to /users/:id using the Bearer Token and with the boolean value for "loggedIn".
+5. Create new users by sending the following JSON in the body to /users/register:
 ```
 {
     username : (string),
@@ -23,7 +24,9 @@ NodeJS + MongoDB API for User Management, Authentication and Registration.
     isAdmin : (boolean)
 }
 ```
-**Could be added:**
+6. Delete a user by sending the user's ID to the delete endpoint at /users/:id with the Bearer Token.
+
+**Possible New Features:**
 1. Restricting all actions but authorization to an admin user.
 
 **Credits**
