@@ -11,6 +11,7 @@ const schema = new Schema({
     state: {type: String, required: true},
     zip: {type: String, required: true},
     isAdmin:  {type: Boolean, required: true},
+    loggedIn: {type: Boolean, required: false},
     createdDate: { type: Date, default: Date.now }
 });
 
