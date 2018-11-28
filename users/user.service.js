@@ -8,6 +8,7 @@ module.exports = {
     authenticate,
     getAll,
     getById,
+    // isPresent,
     create,
     update,
     delete: _delete
