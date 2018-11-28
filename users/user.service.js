@@ -30,7 +30,6 @@ async function getAll() {
 }
 
 async function getById(id) {
-    console.log("getByID service triggered")
     return await User.findById(id).select('-hash');
 }
 
