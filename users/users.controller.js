@@ -3,21 +3,21 @@ const router = express.Router();
 const userService = require('./user.service');
 
 // routes
-router.post('/authenticate', authenticate);
-router.post('/register', register);
-router.get('/present/:id', isPresent);
+
+router.post('/authenticate', authenticate);  // works 11/27 @ 4:15
+router.post('/register', register);  // works 11/27 @ 11:45
 router.get('/current', getCurrent);
-router.get('/all', getAll);
-router.get('/:id', getById);
+router.get('/all', getAll);  // works 11/27 @ 4:28 in postman
+router.get('/:id', getById);  // works 11/28 @ 10:02 in postman
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
 module.exports = router;
 
 function authenticate(req, res, next) {
-    userService.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(err => next(err));
+    userService.authenticate(req.body) 
+    .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+    .catch(err => next(err));
 }
 
 function register(req, res, next) {
