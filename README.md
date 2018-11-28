@@ -9,8 +9,8 @@ NodeJS + MongoDB API for User Management, Authentication and Registration.
      - See a specific user's contact info, 
      - whether a given user is logged in, and 
      - whether the user in question has admin status.
-4. Create new users by sending the following JSON in the body to /users/register:```
-{
+4. Create new users by sending the following JSON in the body to /users/register:
+```{
     username : (string),
     password : (string),
     firstName : (string),
