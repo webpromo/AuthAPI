@@ -3,8 +3,10 @@ const router = express.Router();
 const userService = require('./user.service');
 
 // routes
+
 router.post('/authenticate', authenticate);
 router.post('/register', register);
+
 router.get('/current', getCurrent);
 router.get('/all', getAll);
 router.get('/:id', getById);
@@ -33,6 +35,14 @@ function getAll(req, res, next) {
 
 function getCurrent(req, res, next) {
     userService.getById(req.user.sub)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function isPresent(req, res, next) {
+    console.log("Made it!")
+    userService.getById(req.user.sub)
+        .then(console.log("is user helpful?",user))
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
