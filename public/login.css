@@ -31,28 +31,28 @@
   .container .atform #at-pwd-form #at-btn {
     width: 50%;
     float: right;
-    color: hotpink;
+    background-color: hotpink;
   }
   .container .atform #at-pwd-form .at-pwd-link {
     margin: 100px 0 0 0;
     position: absolute;
-    color: blue;
+    background-color: blue;
   }
   .container .atform #at-pwd-form fieldset div:nth-of-type(4) {
     float: left;
     width: 48%;
     margin-right: 4%;
-    color: purple;
+    background-color: purple;
   }
   .container .atform #at-pwd-form fieldset div:nth-of-type(5) {
     float: left;
     width: 48%;
-    color: orange;
+    background-color: orange;
   }
   .container .atform .at-signup-link {
     margin: 70px 0 0 0;
     
-    color: red;
+    background-color: red;
   }
   .container .atform .at-signin-link {
     display: none;
