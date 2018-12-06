@@ -1,0 +1,113 @@
+.container .questions .center {
+    text-align: center;
+    /* margin-top: 40%; */
+  
+    margin: 50% 0;
+    font-size: 25px;
+    /* height: 100px; */
+  }
+  .container .questions .center .assess {
+    text-transform: uppercase;
+
+  }
+  .container .divider .other {
+    text-align: center;
+    font-size: 30px;
+    margin: 25% 0;
+  }
+  .container .divider .line1 {
+    border-left: solid;
+    padding: 100px 0;
+    margin: 30px 25px 15px 21px;
+  }
+  .container .divider .line2 {
+    border-left: solid;
+    padding: 100px 0;
+    margin: 15px 25px 0px 21px;
+  }
+  .container .divider hr {
+    display: none;
+  }
+  .container .atform #at-pwd-form #at-btn {
+    width: 50%;
+    float: right;
+    color: hotpink;
+  }
+  .container .atform #at-pwd-form .at-pwd-link {
+    margin: 100px 0 0 0;
+    position: absolute;
+    color: blue;
+  }
+  .container .atform #at-pwd-form fieldset div:nth-of-type(4) {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+    color: purple;
+  }
+  .container .atform #at-pwd-form fieldset div:nth-of-type(5) {
+    float: left;
+    width: 48%;
+    color: orange;
+  }
+  .container .atform .at-signup-link {
+    margin: 70px 0 0 0;
+    
+    color: red;
+  }
+  .container .atform .at-signin-link {
+    display: none;
+    color: chartreuse;
+  }
+  @media only screen and (max-width: 768px) {
+    .container .atform .at-title h3 {
+      margin-top: 50px;
+    }
+    .container .atform #at-pwd-form #at-btn {
+      width: 65%;
+      float: right;
+    }
+  }
+  /* end of media query 320 */
+  @media only screen and (max-width: 767px) {
+    .container .questions .center {
+      margin: 20% 0;
+    }
+    .container .divider .line1 {
+      display: none;
+    }
+    .container .divider .line2 {
+      display: none;
+    }
+    .container .divider .other {
+      margin: 25px 0;
+    }
+    .container .divider .hr1 {
+      display: block;
+      border-top: solid;
+      margin: 0px 0px -48px 60%;
+    }
+    .container .divider .hr2 {
+      display: block;
+      border-top: solid;
+      margin: -47px 60% 0px 0px;
+    }
+    .container .atform #at-pwd-form #at-btn {
+      width: 50%;
+      float: right;
+    }
+  }
+  /* end of media query 767 */
+  @media only screen and (max-width: 375px) {
+    .container .atform #at-pwd-form #at-btn {
+      width: 55%;
+      float: right;
+    }
+  }
+  /* end of media query 375 */
+  @media only screen and (max-width: 320px) {
+    .container .atform #at-pwd-form #at-btn {
+      width: 60%;
+      float: right;
+    }
+  }
+  /* end of media query 320 */
