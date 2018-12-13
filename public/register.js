@@ -29,25 +29,43 @@ function checkPass()
     }
 }  
 function SubForm (){
-  alert("Here!");
-  // debugger;
+
+//   debugger;
   var sendMe = {};
       sendMe.username = $('#at-field-email').val();
       sendMe.password = $('#at-field-password').val();
       sendMe.firstName = $('#at-field-first_name').val();
       sendMe.lastName = $('#at-field-last_name').val();
-  window.location.assign("/bounce");
-  $.ajax({
-    type:'POST',
-    url:'http://localhost:4000/users/register',
-    contentType: "application/json",
-    dataType: 'json',
-    data: JSON.stringify(sendMe),
-    success: function(data){  /// EVERY THING ABOVE THIS WORKS, BUT NOT BELOW:
-      alert("Registration successful!");
-    },
-    error: function(response) {
-        console.log(response);
+    $.ajax({
+        type:'POST',
+        url:'http://localhost:4000/users/register',
+        contentType: "application/json",
+        dataType: 'json',
+        data: JSON.stringify(sendMe),
+        success: function(response){
+              alert(response);        
+            },
+            error: function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                console.log("msg = ",msg)
+                // $('#post').html(msg);
+            }, 
     }
-  });
+    // window.location.assign("/bounce");
+  );
 }
