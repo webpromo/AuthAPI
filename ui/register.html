@@ -14,6 +14,7 @@
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="register.js"></script>
 </head>
 
@@ -66,11 +67,11 @@
                     <div class="at-title">
                         <h3>Create an Account</h3>
                     </div>
- 
-
+ <!-- action="http://localhost:4000/users/register"    method="post" target = 'hiddenFrame'-->
+ <!-- enctype='application/json' -->
                     <div class="at-pwd-form">
-                        <form role="form" id="at-pwd-form" novalidate=""  enctype='application/json'
-                         action="http://localhost:4000/users/register" method="post" target = '/questions'>
+                        <form role="form" id="at-pwd-form" 
+                         onsubmit="SubForm();">
                             <fieldset>
 
                                 <div class="at-input form-group">

@@ -28,3 +28,26 @@ function checkPass()
         message.innerHTML = "Passwords Do Not Match!"
     }
 }  
+function SubForm (){
+  alert("Here!");
+  // debugger;
+  var sendMe = {};
+      sendMe.username = $('#at-field-email').val();
+      sendMe.password = $('#at-field-password').val();
+      sendMe.firstName = $('#at-field-first_name').val();
+      sendMe.lastName = $('#at-field-last_name').val();
+  window.location.assign("/bounce");
+  $.ajax({
+    type:'POST',
+    url:'http://localhost:4000/users/register',
+    contentType: "application/json",
+    dataType: 'json',
+    data: JSON.stringify(sendMe),
+    success: function(data){  /// EVERY THING ABOVE THIS WORKS, BUT NOT BELOW:
+      alert("Registration successful!");
+    },
+    error: function(response) {
+        console.log(response);
+    }
+  });
+}
