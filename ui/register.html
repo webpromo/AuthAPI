@@ -70,7 +70,7 @@
 
                     <div class="at-pwd-form">
                         <form role="form" id="at-pwd-form" novalidate=""  enctype='application/json'
-                         action="http://localhost:4000/users/register" method="post" >
+                         action="http://localhost:4000/users/register" method="post" target = '/questions'>
                             <fieldset>
 
                                 <div class="at-input form-group">
@@ -101,8 +101,8 @@
                                         Password (again)
                                     </label>
                                     <input type="password" class="form-control" id="at-field-password_again" name="at-field-password_again"
-                                        autocapitalize="none" autocorrect="off">
-
+                                        autocapitalize="none" autocorrect="off" onkeyup="checkPass(); return false;">
+                                        <span id="confirmMessage" class="confirmMessage" style="float:right;"></span>
                                     <span class="help-block hide"></span>
                                 </div>
 
