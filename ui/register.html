@@ -14,14 +14,7 @@
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-
-        <script>
-            function shipIt(form,res){
-                alert("I'm in!");
-                var formData = JSON.stringify($("#at-pwd-form").serializeArray());
-                console.log("#####  FORM DATA  #######",formData)
-            }
-        </script>
+    <script type="text/javascript" src="register.js"></script>
 </head>
 
 <body>
@@ -76,14 +69,15 @@
  
 
                     <div class="at-pwd-form">
-                        <form role="form" id="at-pwd-form" novalidate="">
+                        <form role="form" id="at-pwd-form" novalidate=""  enctype='application/json'
+                         action="http://localhost:4000/users/register" method="post" >
                             <fieldset>
 
                                 <div class="at-input form-group">
                                     <label class="control-label" for="at-field-email">
                                         Email
                                     </label>
-                                    <input type="email" class="form-control" id="at-field-email" name="at-field-email"
+                                    <input type="email" class="form-control" id="at-field-email" name="username"
                                         autocapitalize="none" autocorrect="off">
 
                                     <span class="help-block hide"></span>
@@ -95,7 +89,7 @@
                                     <label class="control-label" for="at-field-password">
                                         Password
                                     </label>
-                                    <input type="password" class="form-control" id="at-field-password" name="at-field-password"
+                                    <input type="password" class="form-control" id="at-field-password" name="password"
                                         autocapitalize="none" autocorrect="off">
 
                                     <span class="help-block hide"></span>
@@ -117,7 +111,7 @@
                                     <label class="control-label" for="at-field-first_name">
                                         First Name
                                     </label>
-                                    <input type="text" class="form-control" id="at-field-first_name" name="at-field-first_name"
+                                    <input type="text" class="form-control" id="at-field-first_name" name="firstName"
                                         autocapitalize="none" autocorrect="off">
 
                                     <span class="help-block hide"></span>
@@ -129,7 +123,7 @@
                                     <label class="control-label" for="at-field-last_name">
                                         Last Name
                                     </label>
-                                    <input type="text" class="form-control" id="at-field-last_name" name="at-field-last_name"
+                                    <input type="text" class="form-control" id="at-field-last_name" name="lastName"
                                         autocapitalize="none" autocorrect="off">
 
                                     <span class="help-block hide"></span>
@@ -137,7 +131,7 @@
 
 
                                 <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" 
-                                id="at-btn" onClick="shipIt()">
+                                id="at-btn">
                                     Register Now!
                                 </button>
                             </fieldset>

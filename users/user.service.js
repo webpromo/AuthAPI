@@ -8,6 +8,7 @@ module.exports = {
     authenticate,
     getAll,
     getById,
+    bounce,
     // isPresent,
     create,
     update,
@@ -24,6 +25,10 @@ async function authenticate({ username, password }) {
             token
         };
     }
+}
+
+async function bounce(stuff) {  // to test whether the JSON submitted via a form is arriving intact.
+    return console.log("#########  RECEIVED:  ",stuff)
 }
 
 async function getAll() {
