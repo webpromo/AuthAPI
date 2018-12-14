@@ -3,8 +3,8 @@
 function checkPass()
 {
     //Store the password field objects into variables ...
-    var pass1 = document.getElementById('at-field-password');
-    var pass2 = document.getElementById('at-field-password_again');
+    var pass1 = document.getElementById('password');
+    var pass2 = document.getElementById('password_again');
     //Store the Confimation Message Object ...
     var message = document.getElementById('confirmMessage');
     //Set the colors we will be using ...
@@ -32,39 +32,37 @@ function SubForm (){
 
 //   debugger;
   var sendMe = {};
-      sendMe.username = $('#at-field-email').val();
-      sendMe.password = $('#at-field-password').val();
+      sendMe.username = $('#username').val();
+      sendMe.password = $('#password').val();
       sendMe.firstName = $('#at-field-first_name').val();
       sendMe.lastName = $('#at-field-last_name').val();
+        // Prevents a JSON parse error when no content is returned:
+      $.ajaxSetup({
+        dataFilter: function(data, dataType) {
+            if (dataType == 'json' && data == '') {
+                return null;
+            } else {
+                return data;
+            }
+        }
+    });
+
     $.ajax({
         type:'POST',
+        method: 'POST',
         url:'http://localhost:4000/users/register',
         contentType: "application/json",
-        dataType: 'json',
+        dataType: 'json', 
         data: JSON.stringify(sendMe),
-        success: function(response){
-              alert(response);        
-            },
-            error: function (jqXHR, exception) {
-                var msg = '';
-                if (jqXHR.status === 0) {
-                    msg = 'Not connect.\n Verify Network.';
-                } else if (jqXHR.status == 404) {
-                    msg = 'Requested page not found. [404]';
-                } else if (jqXHR.status == 500) {
-                    msg = 'Internal Server Error [500].';
-                } else if (exception === 'parsererror') {
-                    msg = 'Requested JSON parse failed.';
-                } else if (exception === 'timeout') {
-                    msg = 'Time out error.';
-                } else if (exception === 'abort') {
-                    msg = 'Ajax request aborted.';
-                } else {
-                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        complete: function(xhr) {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 201) {
+                    alert("Created");
                 }
-                console.log("msg = ",msg)
-                // $('#post').html(msg);
-            }, 
+            } else {
+                alert("NoGood");
+            }
+        }
     }
     // window.location.assign("/bounce");
   );
