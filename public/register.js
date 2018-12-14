@@ -50,7 +50,7 @@ function SubForm (){
     $.ajax({
         type:'POST',
         method: 'POST',
-        url:'http://localhost:4000/users/register',
+        url:'http://localhost:3001/users/register',
         contentType: "application/json",
         dataType: 'json', 
         data: JSON.stringify(sendMe),
