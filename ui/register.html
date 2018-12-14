@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>AuthAPI Registration Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700" />
+    <link rel="stylesheet" href="login.css" type="text/css" />
+    <!-- Latest compiled and minified bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="__blaze-root">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="DevLevelLogoAndWordsWhite.5.25.png">
+                    </a>
+                </div>
+            </div> <!-- /.container-fluid -->
+        </nav>
+
+        <div class="container">
+
+            <!-- assessment section -->
+            <div class="col-sm-5 col-sm-push-6 questions">
+                <div class="center">
+                    <a href="http://DeveloperLevel.com/questions">
+                        Start Your <br>
+                        <span class="assess"> mbti </span> <br>
+                        Assessment
+                    </a>
+                </div>
+            </div>
+
+            <!-- divide page with or -->
+            <div class="col-sm-1 divider">
+                <div class="line1"></div>
+                <hr class="hr1">
+                <div class="other">
+                    OR
+                </div>
+                <hr class="hr2">
+                <div class="line2"></div>
+            </div>
+
+            <!-- registration form -->
+            <div class="col-sm-5 col-sm-pull-6 align-middle atform">
+
+                <div class="at-form">
+
+                    <div class="at-title">
+                        <h3>Create an Account</h3>
+                    </div>
+ <!-- action="http://localhost:3001/users/register"    method="post" target = 'hiddenFrame'-->
+ <!-- enctype='application/json' -->
+                    <div class="at-pwd-form">
+                        <form role="form" id="at-pwd-form" 
+                         onsubmit="SubForm();">
+                            <fieldset>
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="username">
+                                        Email
+                                    </label>
+                                    <input type="email" class="form-control" id="username" name="username"
+                                        autocapitalize="none" autocorrect="off" autocomplete="username email" >
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="password">
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        autocapitalize="none" autocorrect="off" autocomplete="new-password" >
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="password_again">
+                                        Password (again)
+                                    </label>
+                                    <input type="password" class="form-control" id="password_again" name="password_again"
+                                        autocapitalize="none"  onkeyup="checkPass(); return false;">
+                                        <span id="confirmMessage" class="confirmMessage" style="float:right;"></span>
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="at-field-first_name">
+                                        First Name
+                                    </label>
+                                    <input type="text" class="form-control" id="at-field-first_name" name="firstName"
+                                        autocapitalize="none" autocorrect="off">
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="at-field-last_name">
+                                        Last Name
+                                    </label>
+                                    <input type="text" class="form-control" id="at-field-last_name" name="lastName"
+                                        autocapitalize="none" autocorrect="off">
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+                                <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" 
+                                id="at-btn">
+                                    Register Now!
+                                </button>
+                            </fieldset>
+                        </form>
+                    </div>
+
+
+
+                    <div class="at-signin-link">
+                        <p>
+                            If you already have an account
+                            <a href="/signin" id="at-signIn" class="at-link at-signin">sign in</a>
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+
+                <!-- {{ > atForm state='signUp'}} -->
+            </div>
+
+        </div> <!-- end of container -->
+
+    </div>
+
+</body>
+
+</html>

@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // use JWT auth to secure the api
-app.use(jwt());
+// app.use(jwt());  // uncomment for security
 
 // api routes
 app.use('/users', require('./users/users.controller'));
@@ -20,7 +20,7 @@ app.use('/users', require('./users/users.controller'));
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? 80 : 4000;
+const port = process.env.NODE_ENV === 'production' ? 80 : 3001;
 const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });

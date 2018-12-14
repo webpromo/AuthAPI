@@ -6,11 +6,11 @@ const schema = new Schema({
     hash: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    address: {type: String, required: true},
-    city: {type: String, required: true},
-    state: {type: String, required: true},
-    zip: {type: String, required: true},
-    isAdmin:  {type: Boolean, required: true},
+    address: {type: String, required: false},
+    city: {type: String, required: false},
+    state: {type: String, required: false},
+    zip: {type: String, required: false},
+    isAdmin:  {type: Boolean, required: false},
     loggedIn:  {type: Boolean, required: false},
     createdDate: { type: Date, default: Date.now }
 });

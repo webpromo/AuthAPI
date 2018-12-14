@@ -6,6 +6,7 @@ const userService = require('./user.service');
 
 router.post('/authenticate', authenticate);
 router.post('/register', register);
+router.post('/bounce', bounce);
 
 router.get('/current', getCurrent);
 router.get('/all', getAll);
@@ -14,6 +15,10 @@ router.put('/:id', update);
 router.delete('/:id', _delete);
 
 module.exports = router;
+
+function bounce(req, res, next) {
+    return userService.bounce(req.body);
+}
 
 function authenticate(req, res, next) {
     userService.authenticate(req.body) 
