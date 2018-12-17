@@ -174,7 +174,8 @@
                     username: $('#username').val(),
                     password: $('#password').val(),
                     firstName: $('#at-field-first_name').val(),
-                    lastName: $('#at-field-last_name').val()
+                    lastName: $('#at-field-last_name').val(),
+                    loggedIn: "true"
                 },
                 function (data, status, jqXHR) {
                     alert(data) // access the user token from here.

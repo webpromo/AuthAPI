@@ -95,7 +95,8 @@
     var posting = $.post( 
       url, 
       {username: $('#username').val(), 
-       password: $('#password').val()},
+       password: $('#password').val(),
+       loggedIn: true},
        function(data, status, jqXHR){
         alert("AuthAPI Token: \n"+data.token) // access the user token from here.
        },
@@ -104,6 +105,7 @@
 
     /* redirects once logged in */
     posting.done(function( data ) {
+      alert("Success!")
       window.location.assign("/dashboard");
     });
   });
