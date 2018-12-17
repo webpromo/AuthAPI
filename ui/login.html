@@ -1,114 +1,172 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
 
-  <head>
+<head>
     <meta charset="utf-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <title>AuthAPI Login Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700" />
-    <link rel="stylesheet" href="login.css" type="text/css" /> 
-      <!-- Latest compiled and minified bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.css" type="text/css" />
+    <!-- Latest compiled and minified bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
 
 
 
-<section class="Auth_page">
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <img src="DevLevelLogoAndWordsWhite.5.25.png">
-        </a>
-      </div> 
-    </div> <!-- /.container-fluid -->
-  </nav>
+    <section class="Auth_page">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="DevLevelLogoAndWordsWhite.5.25.png">
+                    </a>
+                </div>
+            </div> <!-- /.container-fluid -->
+        </nav>
+
+
+
+        <div class="container">
+
+            <!-- assessment section -->
+            <div class="col-sm-5 col-sm-push-6 questions">
+                <div class="center">
+                    <a href="/questions">
+                        Start Your <br>
+                        <span class="assess"> mbti </span> <br>
+                        Assessment
+                    </a>
+                </div>
+            </div>
+
+            <!-- divide page with or -->
+            <div class="col-sm-1 divider">
+                <div class="line1"></div>
+                <hr class="hr1">
+                <div class="other">
+                    OR
+                </div>
+                <hr class="hr2">
+                <div class="line2"></div>
+            </div>
+
+            <!-- login forms -->
+            <div class="col-sm-5 col-sm-pull-6 align-middle atform">
+
+                <div class="at-form">
+
+                    <div class="at-title">
+                        <h3>Sign In</h3>
+                    </div>
+
+                    <div class="at-pwd-form">
+                        <form role="form" id="at-pwd-form" novalidate="" 
+                        action="http://localhost:3001/users/authenticate" method="POST">
+                            <fieldset>
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="username">
+                                        Email
+                                    </label>
+                                    <input type="email" class="form-control" id="username" name="username"
+                                        autocapitalize="none" autocorrect="off">
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+                                <div class="at-input form-group">
+                                    <label class="control-label" for="password">
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control" id="password" name="at-field-password"
+                                        autocapitalize="none" autocorrect="off">
+
+                                    <span class="help-block hide"></span>
+                                </div>
+
+
+                                <div class="at-pwd-link">
+                                    <p>
+
+                                        <a href="/forgot-password" id="at-forgotPwd" class="at-link at-pwd">Forgot your
+                                            password?</a>
+
+                                    </p>
+                                </div>
+
+                                <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" id="at-btn">
+                                    Sign In
+                                </button>
+                            </fieldset>
+                        </form>
+                    </div>
+
+
+
+
+                    <div class="at-signup-link">
+                        <p>
+                            Don't have an account?
+                            <a href="/register.html" id="at-signUp" class="at-link at-signup">Register</a>
+
+                        </p>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script type='text/javascript'>
+      /* attach a submit handler to the form */
+      $("#at-pwd-form").submit(function (event) {
   
-  <div class="container">
-
-    <!-- login forms -->
-    <form role="form" id="at-pwd-form" novalidate="" action="http://localhost:3001/users/authenticate" method="POST">
-      <fieldset>
-            
-    <div class="at-input form-group has-feedback">
-    <label class="control-label" for="username">
-      Email 
-    </label>
-    <input type="email" class="form-control" id="username" name="username" autocapitalize="none" autocorrect="off">
-    
-    <span class="help-block hide"></span>
-  </div>
-    
-    <div class="at-input form-group has-feedback">
-    <label class="control-label" for="password">
-      Password 
-    </label>
-    <input type="password" class="form-control" id="password" name="password" autocapitalize="none" autocorrect="off">
-    
-    <span class="help-block hide"></span>
-  </div>
-        
-          <div class="at-pwd-link">
-    <p>
-      
-      <a href="/forgot-password" id="at-forgotPwd" class="at-link at-pwd">Forgot your password?</a>
-      
-    </p>
-  </div>
-        
-        <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" id="at-btn">
-    Sign In
-  </button>
-      </fieldset>
-    </form>
-
-  </div> <!-- end of container -->
+        /* stop form from submitting normally */
+        event.preventDefault();
   
-</section>
-
-
-
-<script type='text/javascript'>
-  /* attach a submit handler to the form */
-  $("#at-pwd-form").submit(function(event) {
-
-    /* stop form from submitting normally */
-    event.preventDefault();
-
-    /* get the action attribute from the <form action=""> element */
-    var $form = $( this ),
-        url = $form.attr( 'action' ); 
-
-    /* Send the data using post */
-    var posting = $.post( 
-      url, 
-      {username: $('#username').val(), 
-       password: $('#password').val(),
-       loggedIn: true},
-       function(data, status, jqXHR){
-        alert("AuthAPI Token: \n"+data.token) // access the user token from here.
-       },
-       "json"
-       ) ;
-
-    /* redirects once logged in */
-    posting.done(function( data ) {
-      window.location.assign("/dashboard");
-    });
-  });
-</script>
-
-</body>
-</html>
+        /* get the action attribute from the <form action=""> element */
+        var $form = $(this),
+          url = $form.attr('action');
+  
+        /* Send the data using post */
+        var posting = $.post(
+          url,
+          {
+            username: $('#username').val(),
+            password: $('#password').val(),
+            loggedIn: true
+          },
+          function (data, status, jqXHR) {
+            alert("AuthAPI Token: \n" + data.token) // access the user token from here.
+          },
+          "json"
+        );
+  
+        /* redirects once logged in */
+        posting.done(function (data) {
+          window.location.assign("/dashboard");
+        });
+      });
+    </script>
+  
+  </body>
+  
+  </html>
