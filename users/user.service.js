@@ -16,6 +16,7 @@ module.exports = {
 };
 
 async function authenticate({ username, password }) {
+
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
@@ -28,7 +29,7 @@ async function authenticate({ username, password }) {
 }
 
 async function bounce(stuff) {  // to test whether the JSON submitted via a form is arriving intact.
-    return console.log("#########  RECEIVED:  ",stuff)
+    return console.log("#########  RECEIVED  ###########  \n",stuff)
 }
 
 async function getAll() {
@@ -40,6 +41,7 @@ async function getById(id) {
 }
 
 async function create(userParam) {
+    console.log("userParam",userParam)
     // validate
     if (await User.findOne({ username: userParam.username })) {
         throw `Username ${userParam.username} is already taken`;
@@ -52,12 +54,14 @@ async function create(userParam) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
 
-    // save user
+    // save user 
     await user.save();
-    throw `User ${userParam.username} has been created`;
+    throw `User ${userParam.username} has been created`
+    // console.log(`User ${userParam.username} has been created`);
 }
 
 async function update(id, userParam) {
+    console.log("id",id)
     const user = await User.findById(id);
 
     // validate

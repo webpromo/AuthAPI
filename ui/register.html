@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="register.js"></script>
+    <!-- <script src="register.js"></script> -->
 </head>
 
 <body>
@@ -40,7 +40,7 @@
             <!-- assessment section -->
             <div class="col-sm-5 col-sm-push-6 questions">
                 <div class="center">
-                    <a href="http://DeveloperLevel.com/questions">
+                    <a href="/questions">
                         Start Your <br>
                         <span class="assess"> mbti </span> <br>
                         Assessment
@@ -67,11 +67,11 @@
                     <div class="at-title">
                         <h3>Create an Account</h3>
                     </div>
- <!-- action="http://localhost:3001/users/register"    method="post" target = 'hiddenFrame'-->
- <!-- enctype='application/json' -->
+                    <!-- action="http://localhost:3001/users/register"    method="post" target = 'hiddenFrame'-->
+                    <!-- enctype='application/json' -->
                     <div class="at-pwd-form">
-                        <form role="form" id="at-pwd-form" 
-                         onsubmit="SubForm();">
+                        <form role="form" id="at-pwd-form" >
+                      <!-- action="http://localhost:3001/users/register" method="POST"> -->
                             <fieldset>
 
                                 <div class="at-input form-group">
@@ -79,7 +79,7 @@
                                         Email
                                     </label>
                                     <input type="email" class="form-control" id="username" name="username"
-                                        autocapitalize="none" autocorrect="off" autocomplete="username email" >
+                                        autocapitalize="none" autocorrect="off" autocomplete="username email">
 
                                     <span class="help-block hide"></span>
                                 </div>
@@ -91,7 +91,7 @@
                                         Password
                                     </label>
                                     <input type="password" class="form-control" id="password" name="password"
-                                        autocapitalize="none" autocorrect="off" autocomplete="new-password" >
+                                        autocapitalize="none" autocorrect="off" autocomplete="new-password">
 
                                     <span class="help-block hide"></span>
                                 </div>
@@ -102,8 +102,8 @@
                                         Password (again)
                                     </label>
                                     <input type="password" class="form-control" id="password_again" name="password_again"
-                                        autocapitalize="none"  onkeyup="checkPass(); return false;">
-                                        <span id="confirmMessage" class="confirmMessage" style="float:right;"></span>
+                                        autocapitalize="none" onkeyup="checkPass(); return false;">
+                                    <span id="confirmMessage" class="confirmMessage" style="float:right;"></span>
                                     <span class="help-block hide"></span>
                                 </div>
 
@@ -131,8 +131,7 @@
                                 </div>
 
 
-                                <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" 
-                                id="at-btn">
+                                <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" id="at-btn">
                                     Register Now!
                                 </button>
                             </fieldset>
@@ -144,21 +143,87 @@
                     <div class="at-signin-link">
                         <p>
                             If you already have an account
-                            <a href="/signin" id="at-signIn" class="at-link at-signin">sign in</a>
+                            <a href="/login" id="at-signIn" class="at-link at-signin">sign in</a>
 
                         </p>
                     </div>
 
-
-
                 </div>
 
-                <!-- {{ > atForm state='signUp'}} -->
             </div>
 
         </div> <!-- end of container -->
 
     </div>
+
+<!-- <script src="" async defer></script> doesn't seem to do anything or help -->
+
+    <script type='text/javascript'>
+
+        /* attach a submit handler to the form */
+        $("#at-pwd-form").submit(function (event) {
+
+            /* stop form from submitting normally */
+            event.preventDefault();
+
+            /* get the action attribute from the <form action=""> element */
+            var $form = $(this),
+                url = 'http://localhost:3001/users/register' //$form.attr('action');
+// alert("URL = "+url);
+// alert("user ="+ $('#username').val());
+// alert("pass = "+$('#password').val());
+// alert("first = "+$('#at-field-first_name').val());
+
+            /* Send the data using post */
+            var posting = $.post(
+                url,
+                {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                    firstName: $('#at-field-first_name').val(),
+                    lastName: $('#at-field-last_name').val()
+                },
+                function (data, status, jqXHR) {
+                    alert(data) // access the user token from here.
+                },
+                "json"
+            );
+
+            /* redirects once logged in */
+            posting.done(function (data) {
+              alert('User successfully created')  //window.location.assign("/dashboard");
+            });
+            window.location.assign("/dashboard");
+        });
+
+        function checkPass() {
+            //Store the password field objects into variables ...
+            var pass1 = document.getElementById('password');
+            var pass2 = document.getElementById('password_again');
+            //Store the Confimation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colors we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field 
+            //and the confirmation field
+            if (pass1.value == pass2.value) {
+                //The passwords match. 
+                //Set the color to the good color and inform
+                //the user that they have entered the correct password 
+                pass2.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "Passwords Match!"
+            } else {
+                //The passwords do not match.
+                //Set the color to the bad color and
+                //notify the user.
+                pass2.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = "Passwords Do Not Match!"
+            }
+        } 
+    </script>
 
 </body>
 
