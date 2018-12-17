@@ -28,8 +28,8 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({}))
-        .catch(err => next(err));
+    .then(() => res.json({user}))  //res.json({})) <== both seem to work.
+    .catch(err => next(err)); 
 }
 
 function getAll(req, res, next) {
@@ -45,7 +45,6 @@ function getCurrent(req, res, next) {
 }
 
 function isPresent(req, res, next) {
-    console.log("Made it!")
     userService.getById(req.user.sub)
         .then(console.log("is user helpful?",user))
         .then(user => user ? res.json(user) : res.sendStatus(404))
