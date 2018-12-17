@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- <script src="register.js"></script> -->
 </head>
 
 <body>
@@ -67,11 +66,10 @@
                     <div class="at-title">
                         <h3>Create an Account</h3>
                     </div>
-                    <!-- action="http://localhost:3001/users/register"    method="post" target = 'hiddenFrame'-->
-                    <!-- enctype='application/json' -->
+
                     <div class="at-pwd-form">
                         <form role="form" id="at-pwd-form" >
-                      <!-- action="http://localhost:3001/users/register" method="POST"> -->
+ 
                             <fieldset>
 
                                 <div class="at-input form-group">
@@ -156,7 +154,6 @@
 
     </div>
 
-<!-- <script src="" async defer></script> doesn't seem to do anything or help -->
 
     <script type='text/javascript'>
 
@@ -168,11 +165,7 @@
 
             /* get the action attribute from the <form action=""> element */
             var $form = $(this),
-                url = 'http://localhost:3001/users/register' //$form.attr('action');
-// alert("URL = "+url);
-// alert("user ="+ $('#username').val());
-// alert("pass = "+$('#password').val());
-// alert("first = "+$('#at-field-first_name').val());
+                url = 'http://localhost:3001/users/register' 
 
             /* Send the data using post */
             var posting = $.post(

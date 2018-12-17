@@ -28,7 +28,7 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-    .then(() => res.json({}))  //res.json({}))
+    .then(() => res.json({user}))  //res.json({})) <== both seem to work.
     .catch(err => next(err)); 
 }
 

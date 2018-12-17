@@ -41,7 +41,7 @@ async function getById(id) {
 }
 
 async function create(userParam) {
-    console.log("userParam",userParam)
+    
     // validate
     if (await User.findOne({ username: userParam.username })) {
         throw `Username ${userParam.username} is already taken`;
@@ -57,7 +57,6 @@ async function create(userParam) {
     // save user 
     await user.save();
     throw `User ${userParam.username} has been created`
-    // console.log(`User ${userParam.username} has been created`);
 }
 
 async function update(id, userParam) {
