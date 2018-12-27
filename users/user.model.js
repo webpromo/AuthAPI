@@ -12,7 +12,9 @@ const schema = new Schema({
     zip: {type: String, required: false},
     isAdmin:  {type: Boolean, required: false},
     loggedIn:  {type: Boolean, required: false},
-    createdDate: { type: Date, default: Date.now }
+    createdDate: { type: Date, default: Date.now,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date }
 });
 
 schema.set('toJSON', { virtuals: true });
