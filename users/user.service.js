@@ -6,6 +6,7 @@ const User = db.User;
 
 module.exports = {
     authenticate,
+    forgot,
     getAll,
     getById,
     bounce,
@@ -30,6 +31,33 @@ async function authenticate({ username, password }) {
 
 async function bounce(stuff) {  // to test whether the JSON submitted via a form is arriving intact.
     return console.log("#########  RECEIVED  ###########  \n",stuff)
+}
+
+async function forgot(username) {
+    console.log("user = ",username)
+    // validate
+    if (await User.findOne({ username: username })) {
+        var smtpTransport = nodemailer.createTransport('SMTP', {
+            service: 'SendGrid',
+            auth: {
+              user: 'paladinium',
+              pass: 'C@sc@de&M0r0ni'
+            }
+          });
+          var mailOptions = {
+            to: user.email,
+            from: 'passwordreset@demo.com',
+            subject: 'Resetting your password on DeveloperLevel',
+            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+              'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+              'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+              'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+            done(err, 'done');
+          });
+    } else {console.log("Not Found")}
 }
 
 async function getAll() {
