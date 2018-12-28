@@ -12,6 +12,8 @@ router.post('/forgot', forgot);
 router.get('/current', getCurrent);
 router.get('/all', getAll);
 router.get('/:id', getById);
+
+router.put('/reset', reset) //not tested
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -30,6 +32,12 @@ function authenticate(req, res, next) {
 function forgot(req, res, next) {
     userService.forgot(req.body.username)
         .then(user => user ? res.json(user) : res.sendStatus(404)) //
+        .catch(err => next(err));
+}
+
+function reset(req, res, next) {
+    userService.update(req.params.id, req.params.resetPasswordToken)
+        .then(() => res.json(req.body))
         .catch(err => next(err));
 }
 

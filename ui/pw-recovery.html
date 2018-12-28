@@ -120,23 +120,23 @@
 
       /* get the action attribute from the <form action=""> element */
       var $form = $(this),
-        url = $form.attr('action');
+        url = 'http://localhost:3001/users/forgot',
+        userEmail = $('#username').val();
 
       /* Send the data using post */
       var posting = $.post(
         url,
-        {
-          username: $('#username').val()
-        },
+        {username: userEmail},
         function (data, status, jqXHR) {
           alert("here's the returned status: \n" + status) // access the forgot token from here.
         },
-        "json"
+       "json"
       );
 
-      /* redirects once logged in */
+      
+      /* redirects once logged in */  //does not create the internal server error
       posting.done(function (data) {
-        window.location.assign("/resetpassword");
+        alert("Ready to redirect"); //window.location.assign("/resetpassword");
       });
     });
   </script>

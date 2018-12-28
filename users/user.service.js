@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
+const dotenv = require('dotenv').config();
+const nodemailer = require('nodemailer');
 
 module.exports = {
     authenticate,
@@ -34,30 +36,56 @@ async function bounce(stuff) {  // to test whether the JSON submitted via a form
 }
 
 async function forgot(username) {
-    console.log("user = ",username)
     // validate
     if (await User.findOne({ username: username })) {
-        var smtpTransport = nodemailer.createTransport('SMTP', {
-            service: 'SendGrid',
-            auth: {
-              user: 'paladinium',
-              pass: 'C@sc@de&M0r0ni'
-            }
-          });
-          var mailOptions = {
-            to: user.email,
-            from: 'passwordreset@demo.com',
-            subject: 'Resetting your password on DeveloperLevel',
-            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-              'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-              'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-              'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-          };
-          smtpTransport.sendMail(mailOptions, function(err) {
-            req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-            done(err, 'done');
-          });
-    } else {console.log("Not Found")}
+
+            // let content=encodeURIComponent(username);
+          
+            let transporter = nodemailer.createTransport({  // 
+                host:process.env.DL_HOST,
+                // port: 587,
+                auth: {
+                  user:process.env.DL_EMAIL,
+                  pass:process.env.DL_PASS
+                },
+                tls: {rejectUnauthorized: false},
+                debug:true,
+                name: "mail.developerlevel.com"
+            })
+            console.log("1. Transporter ready. username =",username)
+
+            let mailOptions = {
+                from: `"DeveloperLevel Support" <${process.env.DL_EMAIL}>`, // sender email address
+                to: username, //email address you want to send email to.
+                subject: "Password Reset", 
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                'http://DeveloperLevel.com/reset/ \n\n' +
+                'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            };
+          
+          console.log("2. MailOptions ready",mailOptions)
+            let info = await transporter.sendMail(mailOptions);
+            console.log('3. Message sent:', info);
+            console.log(nodemailer.getTestMessageUrl(info));
+        
+            // only needed when using pooled connections
+            // transporter.close();
+        }
+
+        // console.log("############### req.headers.host", req.headers.host)
+        // const sgMail = require('@sendgrid/mail');
+        // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        // const msg = {
+        // to: username,
+        // from: 'support@paladinarcher.com',
+        // subject: 'DeveloperLevel password reset',
+        // text: 'and easy to do anywhere, even with Node.js',
+        // html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+        // };
+        // console.log("############### req.headers.host", req.headers.host)
+        // sgMail.send(msg)
+        // .catch(console.log("Caught an error:", err));
 }
 
 async function getAll() {
